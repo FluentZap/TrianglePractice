@@ -6,19 +6,24 @@ $(document).ready(function(){
     var three = parseFloat($("#form-side3Input").val());
     var triangle_type = triangle(one, two, three);
     $("#result").text(triangle_type);
+    if (rightTriangle(one, two, three)){
+      $("#result").append(" And it's Right on!")
+    }
   });
 
 });
 
 
-function triangle(one, two, three) {
+function rightTriangle(one, two, three) {
   var isTriangle = (Math.pow(one, 2) + Math.pow(two, 2)) === Math.pow(three, 2);
-  if (!isTriangle) {
-    return "Right angle, right on!"
+  if (isTriangle) {
+    return true;
+  } else {
+    return false;
   }
-  // {
-  //   return "Not a Triangle, Dude!";
-  // }
+}
+
+function triangle(one, two, three) {
   //All sides Equal
    if (one === two && two === three) {
       return "Nice Equilateral Triangle, Bro!";
@@ -28,8 +33,7 @@ function triangle(one, two, three) {
   } else {
     return "Nice Scalene Triangle, Far out!";
 }
-
-
-
+  //if (one <= 0 && two > 0 )
+  return "Not a Triangle, Bro!";
   return    //Equilateral, Isosceles, Scalene, Not a Triangle
 }
